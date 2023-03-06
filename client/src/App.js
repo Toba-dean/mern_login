@@ -1,13 +1,38 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import {
+  Username, Password, NotFound, Profile, Recovery, Register, Reset
+} from "./components";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home Page</div>
+    element: <Username />
   },
   {
     path: "/register",
-    element: <div>Register Page</div>
+    element: <Register />
+  },
+  {
+    path: "/password",
+    element: <Password />
+  },
+  {
+    path: "/profile",
+    element: <Profile />
+  },
+  {
+    path: "/recovery",
+    element: <Recovery />
+  },
+  {
+    path: "/reset",
+    element: <Reset />
+  },
+  {
+    path: "*",
+    element: <NotFound />
   },
 ]);
 

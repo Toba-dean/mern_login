@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {Toaster} from "react-hot-toast";
 
 import avatar from "../assets/profile.png";
 import styles from "../styles/Username.module.css";
@@ -6,7 +7,7 @@ import styles from "../styles/Username.module.css";
 
 const Username = () => {
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <div className="flex justify-center items-center">
         <div className={`${styles.glass} mt-5`}>
           <div className="title flex flex-col items-center">

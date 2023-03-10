@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <Profile />
   },
   {
-    path: "/recovery",
+    path: "/recover",
     element: <Recovery />
   },
   {

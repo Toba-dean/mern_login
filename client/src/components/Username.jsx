@@ -1,13 +1,30 @@
 import { Link } from "react-router-dom";
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { useFormik } from "formik";
 
 import avatar from "../assets/profile.png";
 import styles from "../styles/Username.module.css";
+import { usernameValidate } from "../helper/validate";
 
 
 const Username = () => {
+
+  const formik = useFormik({
+    initialValues: {
+      username: ""
+    },
+    validate: usernameValidate,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: async values => {
+      console.log(values)
+    }
+  });
+
   return (
     <div className="container mx-auto">
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
+
       <div className="flex justify-center items-center">
         <div className={`${styles.glass} mt-5`}>
           <div className="title flex flex-col items-center">
@@ -17,13 +34,18 @@ const Username = () => {
             </span>
           </div>
 
-          <form className="py-1">
+          <form className="py-1" onSubmit={formik.handleSubmit}>
             <div className="profile flex justify-center py-4">
               <img src={avatar} alt="avatar" className={styles.profile_img} />
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
-              <input type="text" placeholder="username" className={styles.text_box} />
+              <input
+                {...formik.getFieldProps("username")}
+                type="text"
+                placeholder="username"
+                className={styles.text_box}
+              />
               <button className={styles.btn} type="submit">Let's Go</button>
             </div>
 

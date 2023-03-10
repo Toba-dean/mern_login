@@ -2,7 +2,9 @@ import React from 'react'
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className="flex justify-center items-center h-screen">
+      <h1 className='text-5xl font-extrabold italic'>Page Not Found</h1>
+    </div>
   )
 }
 

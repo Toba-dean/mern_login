@@ -1,30 +1,8 @@
-import { Link } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-import { useFormik } from "formik";
-
-import avatar from "../assets/profile.png";
 import styles from "../styles/Username.module.css";
-import { passwordValidate } from "../helper/validate";
-
 
 const Recovery = () => {
-
-  const formik = useFormik({
-    initialValues: {
-      password: ""
-    },
-    validate: passwordValidate,
-    validateOnBlur: false,
-    validateOnChange: false,
-    onSubmit: async values => {
-      console.log(values)
-    }
-  });
-
   return (
     <div className="container mx-auto">
-      <Toaster position="top-center" reverseOrder={false}></Toaster>
-
       <div className="flex justify-center items-center">
         <div className={`${styles.glass} mt-5`}>
           <div className="title flex flex-col items-center">
@@ -34,7 +12,7 @@ const Recovery = () => {
             </span>
           </div>
 
-          <form className="py-10" onSubmit={formik.handleSubmit}>
+          <form className="pt-20">
             <div className="textbox flex flex-col items-center gap-6">
               <div className="input text-center">
                 <span className="py-4 text-sm text-left text-gray-500">
@@ -42,7 +20,6 @@ const Recovery = () => {
                 </span>
 
                 <input
-                  {...formik.getFieldProps("password")}
                   type="text"
                   placeholder="OTP"
                   className={styles.text_box}

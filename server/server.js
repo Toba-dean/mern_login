@@ -8,15 +8,18 @@ const morgan = require("morgan");
 const PORT = 3000;
 
 const connectDB = require("./db/connect");
+const UserRoute = require("./routes/routes");
 
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"))
 app.disable("x-powered-by")
 
-app.get("/", (req, res) => {
-  res.status(200).json({ success: true, msg: "This is the get route" })
-})
+// app.get("/", (req, res) => {
+//   res.status(200).json({ success: true, msg: "This is the get route" })
+// })
+
+app.use("/api/v1", UserRoute)
 
 const start = async () => {
   try {

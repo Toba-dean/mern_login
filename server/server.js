@@ -10,16 +10,19 @@ const PORT = 3000;
 const connectDB = require("./db/connect");
 const UserRoute = require("./routes/routes");
 
+const ErrorHandlerMiddleware = require("./middleware/error-handling");
+const NotFoundMiddleware = require("./middleware/route-not-found");
+
 app.use(express.json());
 app.use(cors());
-app.use(morgan("tiny"))
-app.disable("x-powered-by")
+app.use(morgan("tiny"));
+app.disable("x-powered-by");
 
-// app.get("/", (req, res) => {
-//   res.status(200).json({ success: true, msg: "This is the get route" })
-// })
 
-app.use("/api/v1", UserRoute)
+app.use("/api/v1", UserRoute);
+
+app.use(NotFoundMiddleware);
+app.use(ErrorHandlerMiddleware);
 
 const start = async () => {
   try {

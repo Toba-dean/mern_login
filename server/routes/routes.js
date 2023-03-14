@@ -1,45 +1,32 @@
 const express = require("express");
 const router = express.Router();
 
+const AppController = require("../controller/AppController");
 
-router.route("/register").post((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+const {
+  register, login, registerMail, authenticate, updateUser,
+  resetPassword, getUser, createResetSession, generateOTP, verifyOTP
+} = AppController;
 
-router.route("/login").post((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
 
-router.route("/registerMail").post((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/register").post(register);
 
-router.route("/authenticate").post((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/login").post(login);
 
-router.route("/user/:username").get((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/registerMail").post(registerMail);
 
-router.route("generateOTP").get((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/authenticate").post(authenticate);
 
-router.route("/verifyOTP").get((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/user/:username").get(getUser);
 
-router.route("/createResetSession").get((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/generateOTP").get(generateOTP);
 
-router.route("/updateUser").patch((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/verifyOTP").get(verifyOTP);
 
-router.route("/resetPassword").post((req, res) => {
-  res.status(200).json({ success: true, msg: "This is the register route" })
-});
+router.route("/createResetSession").get(createResetSession);
+
+router.route("/updateUser").patch(updateUser);
+
+router.route("/resetPassword").patch(resetPassword);
 
 module.exports = router
